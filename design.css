@@ -1,0 +1,64 @@
+body {
+    backface-visibility: visible;
+    background-color: black;
+    color: aqua;
+}
+
+#heading {
+    text-align: center;
+    font-size: 10ex;
+    font-family:fantasy;
+}
+
+.grid {
+    justify-content: center;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(6, 15ex);
+    grid-template-rows: repeat(6, 15ex);
+    grid-auto-flow: column;
+}
+
+.blank {
+    background-color: white;
+    color: white;
+    border-radius: 0.9ex;
+    padding: 0ex;
+    font-size: 150%;
+    text-align: center;
+
+}
+
+.box {
+    background-color: darkgray;
+    color: darkgray;
+    border-radius: 0.9ex;
+    padding: 0ex;
+    font-size: 150%;
+    text-align: center;
+  }
+
+.active {
+    background-color: red;
+    color: red;
+    border-radius: 0.9ex;
+    padding: 0ex;
+    font-size: 150%;
+    pointer-events: none;
+}
+
+.num {
+    background-color: inherit;
+    color: white;
+    text-align: center;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
+    font-size: 4ex;
+
+}
+
+
+.box:hover {
+    background-color: blue;
+    color: blue;
+}
