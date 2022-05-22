@@ -2,7 +2,10 @@
 const divItems = document.getElementsByClassName("box");
 let mistakes = 4;
 let levels = [[1,1,1,1,1,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,1,1,1,1],
-[1,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,1,1,1,1] ,[1,0,0,0,0,0,1,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0,0]];
+[1,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,1,1,1,1] ,[1,0,0,0,0,0,1,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0,0],
+[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]];
+
+
 
 let correctblocks = 15;
 let levelcount = 0;
@@ -66,6 +69,22 @@ function level3() {
     document.getElementById("col5").textContent = "1";
 
 }
+function level4() {
+
+    document.getElementById("level").textContent = "Level 4"
+    document.getElementById("row1").textContent = "1 1 1";
+    document.getElementById("row2").textContent = "1 1";
+    document.getElementById("row3").textContent = "1 1 1"
+    document.getElementById("row4").textContent = "1 1";
+    document.getElementById("row5").textContent = "1 1 1";
+
+    document.getElementById("col1").textContent = " 1 \n\r1\n\r1";
+    document.getElementById("col2").textContent = " 1 \n\r1";
+    document.getElementById("col3").textContent = " 1 \n\r1\n\r1";
+    document.getElementById("col4").textContent = " 1 \n\r1";
+    document.getElementById("col5").textContent = " 1 \n\r1\n\r1";
+
+}
 $(document).ready(function() {
     $(".next").click(function(event) {
         document.querySelector('.next').disabled = true;
@@ -79,9 +98,12 @@ $(document).ready(function() {
             level3();
         }
         else if(levelcount == 3){
-            levelcount = 0;
+            // levelcount = 0;
+            level4();
+        }
+        else if(levelcount == 4) {
             level1();
-            gameover();
+            levelcount = 0;
         }
         currentlevel = levels[levelcount];
        
@@ -106,8 +128,8 @@ $(document).ready(function()
                     event.target.className ="active";
                     correctblocks--;
                     if(correctblocks == 0){
-                        alert("LEVEL cleared");
-                        if(levelcount == 2){
+                        alert("LEVEL cleared");''
+                        if(levelcount == 3){
                             alert("YOU COMPLETED THE GAME CLICK ON NEXT TO RESTART");
                         }
                         document.querySelector('.next').disabled = false;

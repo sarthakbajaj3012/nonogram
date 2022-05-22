@@ -94,6 +94,10 @@ body {
 
 }
 
+.next {
+    background-color: green;
+}
+
 .box:hover {
     background-color: blue;
     color: blue;
