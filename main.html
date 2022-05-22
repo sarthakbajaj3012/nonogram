@@ -11,11 +11,25 @@
 
 
 <body>
+    <nav>
+        <a id = "nav" href ="#instructions">How To Play!</a>
+    </nav>
     <h1 id="heading"> N0NOGRAM</h1>
 
-    <div id="lives">
-        <h3> Lives left : 4</h3>
+    <section>
+        <div id= "next">
+            <button type="button" class="next" disabled >Next Level</button>
+        </div>
+
+        <div id="lives">
+            <b>Lives left : 4 </b>
+        </div>
+    </section>
+    <div id = "level">
+        Level 1
     </div>
+
+
     <div class="grid" >
         <div class="num" and id ></div>
         <div class="num" and id = "row1" >1 1 </div>
@@ -58,10 +72,24 @@
 
 
     </div>
+    <section id = "instructions">
+        <h2>ABOUT THE GAME! </h2>
+        <ul>
+            <li>A dark gray block is an unmarked block</li>
+            <li>A white block depicts an empty block</li>
+            <li>A red block depicts a filled block</li>
+            <li>Left click on the block to mark it as filled. Note : It cannot be reversed!</li>
+            <li>Right click on the block to toggle between empty and unmarked.</li>
+            <li>Right clicking will mark the block as empty </li>
+            <li>You will have four lives in each level</li>
+            <li>Beside each row of the grid are listed the lengths of the runs of black squares on that row. </li>
+            <li>Above each column are listed the lengths of the runs of black squares in that column.</li> 
+            <li> There are four levels in the game</li>
+            <li> You can only access the next level after completing the previous levels</li>
 
-    <div>
-        <button type="button" class="nxt">Next Level</button>
-    </div>
+        </ul>
+
+    </section>
 </body>
 
 

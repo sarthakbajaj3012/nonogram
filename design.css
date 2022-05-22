@@ -4,6 +4,14 @@ body {
     color: aqua;
 }
 
+.next {
+   float: right;
+}
+
+#nav{
+    color: chartreuse;
+}
+
 #heading {
     text-align: center;
     font-size: 10ex;
@@ -29,6 +37,16 @@ body {
 
 }
 
+.wrong {
+    background-image: url('X.png');
+    background-size: cover;
+    border-radius: 0.9ex;
+    padding: 0ex;
+    font-size: 150%;
+    text-align: center;
+    color: black;
+}
+
 .box {
     background-color: darkgray;
     color: darkgray;
@@ -47,6 +65,7 @@ body {
     pointer-events: none;
 }
 
+
 .num {
     background-color: inherit;
     color: white;
@@ -58,8 +77,92 @@ body {
 
 }
 
+#lives {
+    text-align: left;
+    font-weight: 100;
+    font-size: 40px;
+}
+
+#level {
+    font-weight: 100;
+    font-style: italic;
+    color: crimson;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 100px;
+    margin-left: 40px;
+
+}
 
 .box:hover {
     background-color: blue;
     color: blue;
+}
+
+@media all and (max-width:400px) and (max-height:780px){
+
+    #heading {
+        text-align: center;
+        font-size: 4ex;
+        font-family:fantasy;
+    }
+
+    .grid {
+        justify-content: center;
+        display: grid;
+        grid-gap: 3px;
+        grid-template-columns: repeat(6, 5ex);
+        grid-template-rows: repeat(6, 5ex);
+        grid-auto-flow: column;
+    }
+    .box:hover {
+        background-color: blue;
+        color: blue;
+    }
+
+
+    .num {
+        background-color: inherit;
+        color: white;
+        text-align: center;
+        padding-top: 1ex;
+        padding-bottom: 1ex;
+        font-size: 2ex;
+        white-space: pre;
+    }
+
+    #level {
+        font-weight: 100;
+        font-style: italic;
+        color: crimson;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 20px;
+        margin-left: 4px;
+    }
+
+    #lives {
+        text-align: left;
+        font-weight: 10;
+        font-size: 15px;
+    }
+
+    .wrong {
+        background-image: url('X.png');
+        background-size: cover;
+        border-radius: 0.9ex;
+        padding: 0ex;
+        font-size: 50%;
+        text-align: center;
+        color: black;
+    }
+
+    #instructions {
+        font-size: 10px;
+    }
+    .next{
+        font-size: 10px;
+        background-color: green;
+    }
+
 }

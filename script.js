@@ -5,29 +5,29 @@ let levels = [[1,1,1,1,1,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,1,1,1,1],
 [1,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,1,1,1,1] ,[1,0,0,0,0,0,1,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0,0]];
 
 let correctblocks = 15;
-let blankblocks = 25 - correctblocks;
 let levelcount = 0;
 let currentlevel = levels[0];
+
 
 
 function gameover() {
 
     mistakes = 4;
-    correctblocks = 15;
-    levelcount = 0;
-    currentlevel = levels[0];
-    level1();
+    correctblocks = currentlevel.filter(x => x==1).length;
     cleargrid();
 
 }
 
 function cleargrid(){
+    mistakes = 4;
     $('.active').addClass('box').removeClass('active');
     $('.blank').addClass('box').removeClass('blank');
+    $('.wrong').addClass('box').removeClass('wrong');
     document.getElementById("lives").textContent = "Lives left: " + mistakes;
 }
 
 function level1(){
+    document.getElementById("level").textContent = "Level 1"
     document.getElementById("row1").textContent = "1 1";
     document.getElementById("row2").textContent = "2 2";
     document.getElementById("row3").textContent = "1 1 1"
@@ -43,6 +43,7 @@ function level1(){
 }
 
 function level2() {
+    document.getElementById("level").textContent = "Level 2"
     document.getElementById("row2").textContent = "1 2";
     document.getElementById("row3").textContent = "1 1"
     document.getElementById("row4").textContent = "1 2";
@@ -52,6 +53,7 @@ function level2() {
 
 }
 function level3() {
+    document.getElementById("level").textContent = "Level 3"
     document.getElementById("row2").textContent = "1 1";
     document.getElementById("row3").textContent = "1"
     document.getElementById("row4").textContent = "1";
@@ -65,11 +67,11 @@ function level3() {
 
 }
 $(document).ready(function() {
-    $(".nxt").click(function(event) {
+    $(".next").click(function(event) {
+        document.querySelector('.next').disabled = true;
         cleargrid();
         levelcount++;
-        console.log(levelcount);
-        currentlevel = levels[levelcount];
+        
         if(levelcount == 1){
             level2();
         }
@@ -77,60 +79,67 @@ $(document).ready(function() {
             level3();
         }
         else if(levelcount == 3){
-            alert("YOU COMPLETED THE GAME CLICK ON NEXT TO RESTART");
+            levelcount = 0;
+            level1();
             gameover();
         }
+        currentlevel = levels[levelcount];
        
         correctblocks = currentlevel.filter(x => x==1).length;
-        blankblocks = 25 - correctblocks;
         console.log(correctblocks);
     })
 });
 
+
+
 $(document).ready(function()
 {
-    
+
     $('.box').mousedown(function(event) {
 
-    
-    switch (event.which) {
-        case 1:
-            if(currentlevel[$(event.target).text() - 1] == 1) {
-                if(event.target.className == 'blank'){
-                    blankblocks++;
+        window.addEventListener('contextmenu', function(e){
+            e.preventDefault();
+        })
+        switch (event.which) {
+            case 1:
+                if(currentlevel[$(event.target).text() - 1] == 1) {
+                    event.target.className ="active";
+                    correctblocks--;
+                    if(correctblocks == 0){
+                        alert("LEVEL cleared");
+                        if(levelcount == 2){
+                            alert("YOU COMPLETED THE GAME CLICK ON NEXT TO RESTART");
+                        }
+                        document.querySelector('.next').disabled = false;
+                    }
                 }
-                event.target.className ="active";
-                correctblocks--;
-                if(correctblocks == 0){
-                    alert("LEVEL cleared");
-                }
-            }
-            else {
-                mistakes--;
-                document.getElementById("lives").textContent = "Lives left: " + mistakes;
-                if(mistakes == 0) {
-                    alert("game over");
-                    gameover();
-                }
+                else {
+                    event.target.className = 'wrong'
+                    mistakes--;
 
+                    document.getElementById("lives").textContent = "Lives left: " + mistakes;
+                    if(mistakes == 0) {
+                        alert("game over");
+                        gameover();
+                    }  
+                }      
+                break;
+            case 2:
                 
-            }      
-            break;
-        case 2:
-            
-            break;
-        case 3:
-            if(event.target.className == 'box')
-            {
-                event.target.className ="blank";
-                blankblocks--;
-            }
-            if(correctblocks == 0)
-           
-            break;
-        default:
-            alert('You have a strange Mouse!');
-    }
-    })
+                break;
+            case 3:
+                if(event.target.className == 'box')
+                {
+                    event.target.className ="blank";
+                }
+                else if(event.target.className == 'blank')
+                {
+                    event.target.className ="box";
+                }
+                break;
+            default:  
+        }
+
+        })
 });
 
