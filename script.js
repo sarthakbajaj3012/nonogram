@@ -50,7 +50,7 @@ function gameover() {
 }
 
 function cleargrid(){
-    mistakes = 4;
+    mistakes = 7;
     $('.active').addClass('box').removeClass('active');
     $('.blank').addClass('box').removeClass('blank');
     $('.wrong').addClass('box').removeClass('wrong');
@@ -207,7 +207,7 @@ $(document).ready(function()
                     correctblocks--;
                     if(correctblocks == 0){
                         alert("LEVEL cleared");''
-                        if(levelcount == 3){
+                        if(levelcount == 2){
                             alert("YOU COMPLETED THE GAME CLICK ON NEXT TO RESTART");
                         }
                         document.querySelector('.next').disabled = false;
