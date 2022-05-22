@@ -1,4 +1,4 @@
-# Nanogram
+# Nonogram
 
 This is the video demonstration of the game:
 https://www.youtube.com/watch?v=12QB1ox1uiw&ab_channel=NATURE
